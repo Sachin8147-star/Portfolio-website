@@ -1,0 +1,290 @@
+/* Custom Variables for Theme Switching */
+:root[data-theme="dark"] {
+    --bg-color: #050505;
+    --text-main: #ffffff;
+    --text-secondary: #a1a1aa;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --accent: #8b5cf6;
+    --inverse: #ffffff;
+    --btn-bg: #ffffff;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f8fafc;
+    --text-main: #0f172a;
+    --text-secondary: #64748b;
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --accent: #6366f1;
+    --inverse: #ffffff;
+    --btn-bg: #0f172a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.bg-main { background-color: var(--bg-color); }
+.text-main { color: var(--text-main); }
+.text-secondary { color: var(--text-secondary); }
+.text-inverse { color: var(--bg-color); }
+.bg-inverse { background-color: var(--text-main); }
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--accent), #ec4899);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--text-main);
+}
+
+.skill-tag {
+    padding: 6px 12px;
+    border-radius: 99px;
+    background: var(--glass-border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-card {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Hide scrollbar for clean look */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+footer a {
+    display: inline-block;
+    position: relative;
+}
+
+/* Subtle hover underline effect */
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+#live-clock {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.skill-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white; /* Contrast for the accent color */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px var(--accent);
+}
+
+/* Optional: Different colors for different categories */
+.glass-card:nth-child(1):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #6366f1; }
+.glass-card:nth-child(2):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #ec4899; }
+.glass-card:nth-child(3):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #10b981; }
+
+/* Vertical timeline/border effect for certifications */
+.border-l-2 {
+    border-left-width: 2px;
+    border-color: var(--border);
+}
+
+/* Subtle accent background for the main card on hover */
+.glass-card.group:hover {
+    border-color: rgba(var(--accent-rgb), 0.3); /* If using RGB variables */
+}
+
+/* EnsureLucide icons alignment */
+#education [data-lucide] {
+    stroke-width: 2.5px;
+}
+
+.stack-chip {
+    font-family: 'JetBrains Mono', monospace; /* Or any mono font */
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.group:hover .stack-chip {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.border-border {
+    border-color: var(--border);
+}
+
+/* Vertical Timeline Line Color */
+#experience .w-\[1px\] {
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0.3;
+}
+/* Syntax Highlighting Colors */
+.code-key { color: var(--accent); }
+.code-string { color: #27c93f; }
+.code-comment { color: #64748b; font-style: italic; }
+.code-bool { color: #ffbd2e; }
+
+/* Typing Cursor Effect */
+#typed-code::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--accent);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--accent), #ec4899);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Base Skill Tag */
+.skill-tag, .skill-tag-pink, .skill-tag-green {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+/* Blue/Accent (Programming) */
+.skill-tag:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Pink (Design) */
+.skill-tag-pink:hover {
+    background: #ec4899;
+    color: white;
+    border-color: #ec4899;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
+/* Green (Workflow) */
+.skill-tag-green:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Navigation Link Styling */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--text);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Active Section Highlight */
+.nav-link.active {
+    color: var(--accent);
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: top;
+}
+
+#mobile-menu.active {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Helper to prevent header from blocking clicks on hero text */
+header { pointer-events: none; }
+header nav, header #mobile-menu { pointer-events: auto; }
+
+#code-content{
+    padding: 0;
+    text-align: left;
+}
