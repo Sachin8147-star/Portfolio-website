@@ -288,3 +288,8 @@ header nav, header #mobile-menu { pointer-events: auto; }
     padding: 0;
     text-align: left;
 }
+
+.social-icon{
+    font-size: 100px;
+    margin-right: 50px;
+}
