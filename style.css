@@ -32,6 +32,14 @@
 }
 
 /* =========================================
+   GLOBAL SAFETY — nothing should ever be
+   invisible unless explicitly hidden
+   ========================================= */
+body, main, section, div, p, h1, h2, h3, h4, h5, span, a {
+    opacity: revert;
+}
+
+/* =========================================
    BASE STYLES
    ========================================= */
 *, *::before, *::after {
@@ -341,27 +349,21 @@ footer a:hover::after {
 
 /* =========================================
    REVEAL ANIMATION
-   =========================================
-   Elements start invisible and slide up when
-   JS adds the .visible class.
-   The !important on the visible state ensures
-   nothing overrides it once shown.
+   Content is always visible. JS adds a nice
+   fade-in only as a subtle enhancement.
    ========================================= */
 .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    /* Fallback: if JS fails or is slow, still show after 2s */
-    animation: revealFallback 0s 2s forwards;
+    opacity: 1;
+    transform: none;
 }
 
-@keyframes revealFallback {
-    to { opacity: 1; transform: translateY(0); }
+.reveal.animate-in {
+    animation: fadeUp 0.7s ease-out both;
 }
 
-.reveal.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================
@@ -513,6 +515,8 @@ main {
     section {
         padding-top: 3rem !important;
         padding-bottom: 3rem !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 
     main {
