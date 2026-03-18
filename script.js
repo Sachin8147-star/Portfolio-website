@@ -1,37 +1,29 @@
-// =========================================
-// THEME TOGGLE
-// =========================================
+// Apply saved theme immediately to prevent flash
 const htmlElement = document.documentElement;
-
-const savedTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', savedTheme);
+htmlElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Init icons
+    // Init Lucide icons
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // Theme toggle
+    // =========================================
+    // THEME TOGGLE
+    // =========================================
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
 
     function updateIcons(theme) {
         if (!sunIcon || !moonIcon) return;
-        if (theme === 'dark') {
-            sunIcon.classList.add('hidden');
-            moonIcon.classList.remove('hidden');
-        } else {
-            sunIcon.classList.remove('hidden');
-            moonIcon.classList.add('hidden');
-        }
+        sunIcon.classList.toggle('hidden', theme === 'dark');
+        moonIcon.classList.toggle('hidden', theme !== 'dark');
     }
-    updateIcons(savedTheme);
+    updateIcons(htmlElement.getAttribute('data-theme'));
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const current = htmlElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
+            const next = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             htmlElement.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
             updateIcons(next);
@@ -39,34 +31,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    // SCROLL REVEAL — reliable mobile version
+    // SUBTLE SCROLL ANIMATION (enhancement only)
+    // Content is ALWAYS visible — we just add a
+    // nice animation class when elements scroll in
     // =========================================
     const revealEls = document.querySelectorAll('.reveal');
 
-    function checkReveal() {
-        const windowHeight = window.innerHeight;
-        revealEls.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            // Reveal if any part of element is within viewport
-            if (rect.top < windowHeight * 1.05) {
-                el.classList.add('visible');
-            }
-        });
+    if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('animate-in');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+        revealEls.forEach(el => obs.observe(el));
     }
-
-    // Run immediately so elements already on screen appear right away
-    checkReveal();
-
-    // Also run on scroll
-    window.addEventListener('scroll', checkReveal, { passive: true });
+    // If IntersectionObserver not supported, content still shows (opacity:1 in CSS)
 
     // =========================================
     // LIVE CLOCK
     // =========================================
     function updateClock() {
-        const clockEl = document.getElementById('live-clock');
-        if (!clockEl) return;
-        clockEl.textContent = new Date().toLocaleTimeString('en-US', {
+        const el = document.getElementById('live-clock');
+        if (!el) return;
+        el.textContent = new Date().toLocaleTimeString('en-US', {
             hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
         });
     }
@@ -76,18 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // MOBILE MENU
     // =========================================
-    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileBtn  = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
     if (mobileBtn && mobileMenu) {
         mobileBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('active');
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden', !isHidden);
+            mobileMenu.classList.toggle('active',  isHidden);
         });
 
-        mobileLinks.forEach(link => {
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('active');
@@ -106,21 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL SPY
     // =========================================
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks  = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
         let current = '';
-        sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - 200) {
-                current = section.getAttribute('id');
-            }
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 220) current = s.id;
         });
         navLinks.forEach(link => {
-            link.classList.remove('active');
             const href = link.getAttribute('href') || '';
-            if (current && href.includes(current)) {
-                link.classList.add('active');
-            }
+            link.classList.toggle('active', current !== '' && href.includes(current));
         });
     }, { passive: true });
 
