@@ -207,7 +207,7 @@ header nav, header #mobile-menu { pointer-events: auto; }
 }
 
 /* =========================================
-   PROJECT CARDS \u2014 RESPONSIVE FIX
+   PROJECT CARDS — RESPONSIVE FIX
    ========================================= */
 .project-card {
     cursor: pointer;
@@ -296,7 +296,7 @@ header nav, header #mobile-menu { pointer-events: auto; }
 }
 
 /* =========================================
-   SOCIAL ICONS \u2014 RESPONSIVE
+   SOCIAL ICONS — RESPONSIVE
    ========================================= */
 .social-icon {
     font-size: clamp(48px, 10vw, 80px);
@@ -341,16 +341,27 @@ footer a:hover::after {
 
 /* =========================================
    REVEAL ANIMATION
+   =========================================
+   Elements start invisible and slide up when
+   JS adds the .visible class.
+   The !important on the visible state ensures
+   nothing overrides it once shown.
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    /* Fallback: if JS fails or is slow, still show after 2s */
+    animation: revealFallback 0s 2s forwards;
+}
+
+@keyframes revealFallback {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* =========================================
@@ -503,3 +514,9 @@ main {
         padding-top: 3rem !important;
         padding-bottom: 3rem !important;
     }
+
+    main {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
