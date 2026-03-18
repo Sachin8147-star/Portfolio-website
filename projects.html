@@ -9,281 +9,250 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body class="bg-main text-main transition-colors duration-500">
+<body>
 
-    <!-- Bottom Pill Nav -->
-    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass px-4 py-2 rounded-full flex gap-3 md:gap-6 text-xs md:text-sm font-medium">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+<!-- ══ BOTTOM PILL NAV ══ -->
+<nav style="position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:.6rem;padding:.5rem 1.1rem;border-radius:99px;" class="glass">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="#projects"  class="nav-link">Projects</a>
+    <a href="#contact"   class="nav-link">Contact</a>
+</nav>
+
+<!-- ══ TOP HEADER ══ -->
+<header style="position:fixed;top:0;width:100%;z-index:100;padding:.75rem 1rem;pointer-events:none;">
+    <nav style="max-width:72rem;margin:0 auto;pointer-events:auto;">
+        <div class="glass-card" style="padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;">
+            <a href="index.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;">
+                <div style="width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:1rem;">S</div>
+                <span style="font-weight:800;font-size:1.1rem;letter-spacing:-.03em;">SACHIN<span style="color:var(--accent);">.</span></span>
+            </a>
+            <div id="desk-nav" style="display:none;align-items:center;gap:1.5rem;">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#projects"  class="nav-link">Projects</a>
+                <a href="#contact"   class="nav-link">Contact</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:.5rem;">
+                <button id="theme-toggle" style="background:none;border:none;cursor:pointer;padding:.4rem;border-radius:.5rem;color:var(--text);display:flex;align-items:center;">
+                    <i data-lucide="sun"  id="sun-icon"  style="width:20px;height:20px;display:none;"></i>
+                    <i data-lucide="moon" id="moon-icon" style="width:20px;height:20px;"></i>
+                </button>
+                <a href="#contact" style="background:var(--text);color:var(--bg);padding:.35rem .9rem;border-radius:.6rem;font-size:.7rem;font-weight:800;text-decoration:none;white-space:nowrap;">HIRE ME</a>
+                <button id="mob-btn" style="background:none;border:none;cursor:pointer;padding:.3rem;color:var(--text);display:flex;">
+                    <i data-lucide="menu" style="width:24px;height:24px;"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" style="display:none;position:absolute;top:4.5rem;left:1rem;right:1rem;padding:1.5rem;z-index:200;" class="glass-card">
+            <div style="display:flex;flex-direction:column;gap:1rem;text-align:center;">
+                <a href="index.html" class="nav-link mobile-link">Home</a>
+                <a href="#projects"  class="nav-link mobile-link">Projects</a>
+                <a href="#contact"   class="nav-link mobile-link">Contact</a>
+            </div>
+        </div>
     </nav>
+</header>
 
-    <!-- Header Navigation -->
-    <header class="fixed top-0 w-full z-[100] px-4 py-4 md:py-6 pointer-events-none">
-        <nav class="max-w-6xl mx-auto pointer-events-auto">
-            <div class="glass-card rounded-2xl px-4 md:px-6 py-3 flex justify-between items-center border-white/5 shadow-2xl">
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">S</div>
-                    <span class="font-bold tracking-tighter text-xl hidden sm:block">SACHIN<span class="text-accent">.</span></span>
+<!-- ══ MAIN ══ -->
+<main style="max-width:72rem;margin:0 auto;padding:5.5rem 1.5rem 8rem;">
+
+    <!-- Back -->
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-decoration:none;margin-bottom:2rem;margin-top:.5rem;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">
+        <i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Back to Home
+    </a>
+
+    <!-- Stats -->
+    <div class="glass-card" style="padding:1.25rem;display:flex;justify-content:space-around;text-align:center;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+        <div><div style="font-size:2rem;font-weight:900;" class="gradient-text">7+</div><div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Projects</div></div>
+        <div><div style="font-size:2rem;font-weight:900;" class="gradient-text">100+</div><div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Commits</div></div>
+        <div><div style="font-size:2rem;font-weight:900;" class="gradient-text">3+</div><div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Months Exp</div></div>
+    </div>
+
+    <!-- ══ PROJECTS ══ -->
+    <section id="projects" style="padding:1rem 0 3rem;">
+        <p style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);margin-bottom:.4rem;">All Work</p>
+        <h2 style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:900;margin-bottom:2rem;">All Projects.</h2>
+
+        <div class="projects-grid" style="display:grid;grid-template-columns:1fr;gap:1.25rem;">
+
+            <!-- 1. Weather Forecast -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(99,102,241,.08));">
+                    <span style="font-size:3.5rem;">🌤️</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Weather Forecast</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">Python program using OpenWeather API with beautiful data visualizations.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">Python • Matplotlib • Seaborn • OpenWeather API</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/weather-forecast.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Calculator -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(249,115,22,.08));">
+                    <span style="font-size:3.5rem;">🧮</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Calculator</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">Clean and responsive calculator with smooth UI built using vanilla JavaScript.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">HTML • CSS • JavaScript</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/calculator.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                        <a href="https://sachin8147-star.github.io/calculator/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sales Report -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(5,150,105,.08));">
+                    <span style="font-size:3.5rem;">📊</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Sales Report Project</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">Reads CSV sales data, performs analysis, and auto-generates a formatted PDF report.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">Python • Pandas • CSV module • FPDF</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/sales-report-project-python.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Chatbot -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(16,185,129,.08));">
+                    <span style="font-size:3.5rem;">🤖</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Python Chatbot</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">NLP chatbot using NLTK library to process and respond to user input intelligently.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">Python • NLTK • NLP</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/chatbot.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Stone Paper Scissors -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(236,72,153,.1),rgba(139,92,246,.08));">
+                    <span style="font-size:3.5rem;">✂️</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Stone Paper Scissors</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">Classic interactive game with score tracking — my very first frontend project!</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">HTML • CSS • JavaScript</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/stone-paper-scissors-game.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                        <a href="https://sachin8147-star.github.io/stone-paper-scissors-game/" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. SMS Spam Detector -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(236,72,153,.08));">
+                    <span style="font-size:3.5rem;">🛡️</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">SMS Spam Detector</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">Full ML pipeline from preprocessing to model training and evaluation using Scikit-Learn.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">Python • Pandas • Seaborn • Matplotlib • Scikit-Learn</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Sachin8147-star/SMS-Spam-Detecter.git" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Portfolio -->
+            <div class="project-card">
+                <div class="project-icon" style="background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(99,102,241,.08));">
+                    <span style="font-size:3.5rem;">🌐</span>
+                </div>
+                <div class="project-body">
+                    <h3 style="font-weight:800;font-size:1.05rem;margin-bottom:.4rem;">Portfolio Website</h3>
+                    <p style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem;line-height:1.6;">This portfolio — built with HTML, CSS, JavaScript, and Tailwind. Fully responsive.</p>
+                    <p style="font-size:.68rem;color:var(--accent);margin-bottom:.75rem;">HTML • CSS • JavaScript • Tailwind</p>
+                    <div class="project-links">
+                        <a href="#"><i class="bi bi-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact" style="padding:3rem 0;">
+        <div class="glass" style="padding:2.5rem 1.5rem;text-align:center;border-radius:2rem;">
+            <h2 style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:900;margin-bottom:.5rem;">Let's Connect.</h2>
+            <p style="color:var(--muted);margin-bottom:2rem;font-size:.9rem;">Open to new opportunities and collaborations.</p>
+            <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.75rem;">
+                <a href="https://github.com/Sachin8147-star" target="_blank" class="social-btn github" title="GitHub">
+                    <i class="bi bi-github"></i>
                 </a>
-                <div class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-bold uppercase tracking-widest text-muted">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="flex items-center gap-2 md:gap-4">
-                    <button id="theme-toggle" class="p-2 rounded-xl hover:bg-accent/10 transition-colors">
-                        <i data-lucide="sun" id="sun-icon" class="w-5 h-5"></i>
-                        <i data-lucide="moon" id="moon-icon" class="w-5 h-5 hidden"></i>
-                    </button>
-                    <a href="#contact" class="hidden sm:flex items-center gap-2 bg-text text-bg px-3 md:px-4 py-2 rounded-xl text-xs font-bold hover:scale-105 transition-all">
-                        HIRE ME <i data-lucide="arrow-right" class="w-3 h-3"></i>
-                    </a>
-                    <button id="mobile-menu-btn" class="md:hidden p-2 pointer-events-auto">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="absolute top-20 left-4 right-4 glass-card rounded-3xl p-6 hidden md:hidden border-white/5 shadow-2xl pointer-events-auto">
-            <div class="flex flex-col gap-5 text-center font-bold uppercase tracking-widest text-sm">
-                <a href="index.html" class="mobile-nav-link nav-link">Home</a>
-                <a href="#projects" class="mobile-nav-link nav-link">Projects</a>
-                <a href="#contact" class="mobile-nav-link nav-link">Contact</a>
+                <a href="https://linkedin.com/in/sachin-98573a332" target="_blank" class="social-btn linkedin" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ks6911843@gmail.com" target="_blank" class="social-btn email" title="Email">
+                    <i class="bi bi-envelope-fill"></i>
+                </a>
+                <a href="https://www.instagram.com/_sachin.sachin_0000" target="_blank" class="social-btn instagram" title="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://www.x.com/TechGam54440224" target="_blank" class="social-btn twitter" title="Twitter / X">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-32 w-full">
+</main>
 
-        <!-- Back Button -->
-        <a href="index.html" class="inline-flex items-center gap-2 mt-4 text-xs font-bold uppercase tracking-widest text-muted hover:text-accent transition">
-            <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
-        </a>
-
-        <!-- Stats Row -->
-        <section class="mt-8 reveal">
-            <div class="glass rounded-[2rem] p-6 sm:p-8 flex flex-wrap items-center justify-around text-center gap-6">
-                <div>
-                    <div class="text-3xl md:text-4xl font-black gradient-text">6+</div>
-                    <div class="text-xs uppercase tracking-widest mt-2">Projects</div>
-                </div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-black gradient-text">100+</div>
-                    <div class="text-xs uppercase tracking-widest mt-2">Commits</div>
-                </div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-black gradient-text">3mon</div>
-                    <div class="text-xs uppercase tracking-widest mt-2">Exp</div>
+<!-- ══ FOOTER ══ -->
+<footer style="border-top:1px solid var(--border);padding:3rem 1.5rem 2rem;">
+    <div style="max-width:72rem;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;">
+            <div style="grid-column:1/-1;">
+                <div style="font-weight:900;font-size:1.3rem;margin-bottom:.75rem;">PORTFOLIO<span style="color:var(--accent);">.</span></div>
+                <p style="color:var(--muted);font-size:.82rem;max-width:28rem;line-height:1.7;margin-bottom:1rem;">Developing digital products that balance functional minimalism with emotional design.</p>
+                <div style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;">
+                    <span class="ping-dot"><span></span><span></span></span>
+                    &nbsp;Available for new opportunities
                 </div>
             </div>
-        </section>
-
-        <!-- ===================== PROJECTS ===================== -->
-        <section id="projects" class="py-12 md:py-20">
-            <h2 class="text-3xl md:text-4xl font-black mb-8 md:mb-12">FEATURED PROJECTS</h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-
-                <!-- Project Card Template: No absolute tooltips on mobile, info shown directly -->
-
-                <!-- 1. Weather Forecast -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center gap-4 text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="cloud-sun" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="cloud-rain" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="wind" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Weather Forecast</h3>
-                        <p class="text-muted text-sm mb-3">Python program using OpenWeather API.</p>
-                        <p class="text-xs text-accent/70 mb-4">Python • Matplotlib • Seaborn</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/weather-forecast.git" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Calculator -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="calculator" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Calculator</h3>
-                        <p class="text-muted text-sm mb-3">Basic calculator with clean UI.</p>
-                        <p class="text-xs text-accent/70 mb-4">HTML • CSS • JavaScript</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/calculator.git" target="_blank">GitHub</a>
-                            <a href="https://sachin8147-star.github.io/calculator/" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Sales Report -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center gap-4 text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="bar-chart-3" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="file-text" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Sales Report Project</h3>
-                        <p class="text-muted text-sm mb-3">Reads sales data from CSV, performs analysis, and generates a PDF report using FPDF.</p>
-                        <p class="text-xs text-accent/70 mb-4">Python • CSV module • FPDF</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/sales-report-project-python.git" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Python Chatbot -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="bot" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Python Chatbot</h3>
-                        <p class="text-muted text-sm mb-3">Simple chatbot using Python and NLP with the NLTK library.</p>
-                        <p class="text-xs text-accent/70 mb-4">Python • NLTK</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/chatbot.git" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. Stone Paper Scissors -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center gap-4 text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="gamepad-2" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="code" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Stone Paper Scissors</h3>
-                        <p class="text-muted text-sm mb-3">Classic game — my first frontend project!</p>
-                        <p class="text-xs text-accent/70 mb-4">HTML • CSS • JavaScript</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/stone-paper-scissors-game.git" target="_blank">GitHub</a>
-                            <a href="https://sachin8147-star.github.io/stone-paper-scissors-game/" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Portfolio Website -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center gap-4 text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="file-user" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="globe" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Portfolio Website</h3>
-                        <p class="text-muted text-sm mb-3">Created using HTML, CSS, JavaScript with basic UI/UX.</p>
-                        <p class="text-xs text-accent/70 mb-4">HTML • CSS • JavaScript</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7. SMS Spam Detector -->
-                <div class="project-card glass-card overflow-hidden group">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center gap-4 text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="shield-check" class="w-10 h-10 md:w-12 md:h-12"></i>
-                        <i data-lucide="message-square-warning" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">SMS Spam Detector</h3>
-                        <p class="text-muted text-sm mb-3">ML pipeline from data preprocessing to model training and evaluation using Scikit-Learn.</p>
-                        <p class="text-xs text-accent/70 mb-4">Python • Pandas • Seaborn • Matplotlib • Scikit-Learn</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Sachin8147-star/SMS-Spam-Detecter.git" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. Coming Soon -->
-                <div class="project-card glass-card overflow-hidden group opacity-60 hover:opacity-90 transition-opacity">
-                    <div class="h-40 sm:h-52 md:h-64 bg-indigo-500/10 flex items-center justify-center text-indigo-400/40 group-hover:text-indigo-400 transition-colors">
-                        <i data-lucide="clock" class="w-10 h-10 md:w-12 md:h-12"></i>
-                    </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-lg font-bold mb-1">Coming Soon</h3>
-                        <p class="text-muted text-sm mb-3">More projects in the making...</p>
-                        <p class="text-xs text-accent/70 mb-4">Stay tuned!</p>
-                        <div class="project-links">
-                            <a href="#">More Coming Soon</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="py-12 md:py-20 reveal">
-            <div class="glass rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-4">Let's Connect.</h2>
-                <p class="text-muted mb-8 text-sm md:text-base">Open to new opportunities and collaborations.</p>
-                <div class="flex justify-center flex-wrap gap-4 md:gap-8">
-                    <a href="https://github.com/Sachin8147-star" class="foot-logo" target="_blank">
-                        <i class="bi bi-github social-icon"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/sachin-98573a332" class="foot-logo" target="_blank">
-                        <i class="bi bi-linkedin social-icon"></i>
-                    </a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ks6911843@gmail.com" target="_blank" class="foot-logo">
-                        <i class="bi bi-envelope-at-fill social-icon"></i>
-                    </a>
+            <div>
+                <p style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:1rem;">Sitemap</p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                    <a href="index.html">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-12 md:mt-20 border-t border-gray-500/10 pt-12 md:pt-16 pb-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-16">
-                <div class="sm:col-span-2">
-                    <div class="font-bold tracking-tighter text-2xl mb-4">PORTFOLIO<span class="text-accent">.</span></div>
-                    <p class="text-muted max-w-sm mb-6 text-sm">Developing digital products that balance functional minimalism with emotional design.</p>
-                    <div class="flex items-center gap-2 text-sm font-medium">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        Available for new opportunities
-                    </div>
+            <div>
+                <p style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:1rem;">Social</p>
+                <div style="display:flex;flex-direction:column;gap:.6rem;">
+                    <a href="https://github.com/Sachin8147-star" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/sachin-98573a332" target="_blank">LinkedIn</a>
+                    <a href="https://www.x.com/TechGam54440224" target="_blank">Twitter / X</a>
+                    <a href="https://www.instagram.com/_sachin.sachin_0000" target="_blank">Instagram</a>
                 </div>
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-accent mb-4 md:mb-6">Sitemap</h4>
-                    <ul class="space-y-3 text-sm font-medium">
-                        <li><a href="index.html" class="text-muted hover:text-text transition">Home</a></li>
-                        <li><a href="#projects" class="text-muted hover:text-text transition">Projects</a></li>
-                        <li><a href="#contact" class="text-muted hover:text-text transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-accent mb-4 md:mb-6">Social</h4>
-                    <ul class="space-y-3 text-sm font-medium">
-                        <li><a href="https://github.com/Sachin8147-star" target="_blank" class="text-muted hover:text-text transition flex items-center gap-2"><i data-lucide="github" class="w-4 h-4"></i> Github</a></li>
-                        <li><a href="https://linkedin.com/in/sachin-98573a332" target="_blank" class="text-muted hover:text-text transition flex items-center gap-2"><i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn</a></li>
-                        <li><a href="https://www.x.com/TechGam54440224" target="_blank" class="text-muted hover:text-text transition flex items-center gap-2"><i data-lucide="twitter" class="w-4 h-4"></i> Twitter</a></li>
-                        <li><a href="https://www.instagram.com/_sachin.sachin_0000" target="_blank" class="text-muted hover:text-text transition flex items-center gap-2"><i data-lucide="instagram" class="w-4 h-4"></i> Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-6 border-t border-gray-500/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="text-xs font-mono text-muted uppercase">&copy; 2026 All Rights Reserved</div>
-                <div class="glass-card px-4 py-2 flex items-center gap-4">
-                    <div class="text-xs font-mono"><span class="text-muted">LOCAL/</span><span id="live-clock">00:00:00 AM</span></div>
-                    <div class="h-4 w-[1px] bg-gray-500/20"></div>
-                    <div class="text-xs font-mono"><span class="text-muted">STATUS/</span><span class="text-accent">STABLE</span></div>
-                </div>
-                <div class="text-xs font-mono text-muted uppercase">Designed with ❤️</div>
             </div>
         </div>
-    </footer>
+        <div style="border-top:1px solid var(--border);padding-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;">
+            <span style="font-size:.7rem;font-family:monospace;color:var(--muted);">© 2026 All Rights Reserved</span>
+            <div class="glass-card" style="padding:.35rem .9rem;display:inline-flex;align-items:center;gap:.75rem;border-radius:.6rem;">
+                <span style="font-size:.68rem;font-family:monospace;color:var(--muted);">LOCAL/</span><span id="live-clock" style="font-size:.68rem;font-family:monospace;">--:--:-- --</span>
+                <span style="width:1px;height:14px;background:var(--border);display:inline-block;"></span>
+                <span style="font-size:.68rem;font-family:monospace;color:var(--muted);">STATUS/</span><span style="font-size:.68rem;font-family:monospace;color:var(--accent);">STABLE</span>
+            </div>
+            <span style="font-size:.7rem;font-family:monospace;color:var(--muted);">Designed with ❤️</span>
+        </div>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
