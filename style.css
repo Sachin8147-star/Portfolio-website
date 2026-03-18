@@ -1,10 +1,16 @@
-/* Custom Variables for Theme Switching */
+/* =========================================
+   THEME VARIABLES
+   ========================================= */
 :root[data-theme="dark"] {
     --bg-color: #050505;
+    --bg: #050505;
     --text-main: #ffffff;
+    --text: #ffffff;
     --text-secondary: #a1a1aa;
+    --muted: #a1a1aa;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.08);
     --accent: #8b5cf6;
     --inverse: #ffffff;
     --btn-bg: #ffffff;
@@ -12,27 +18,56 @@
 
 :root[data-theme="light"] {
     --bg-color: #f8fafc;
+    --bg: #f8fafc;
     --text-main: #0f172a;
+    --text: #0f172a;
     --text-secondary: #64748b;
+    --muted: #64748b;
     --glass-bg: rgba(0, 0, 0, 0.03);
     --glass-border: rgba(0, 0, 0, 0.08);
+    --border: rgba(0, 0, 0, 0.08);
     --accent: #6366f1;
     --inverse: #ffffff;
     --btn-bg: #0f172a;
+}
+
+/* =========================================
+   BASE STYLES
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
 .bg-main { background-color: var(--bg-color); }
 .text-main { color: var(--text-main); }
 .text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--muted); }
 .text-inverse { color: var(--bg-color); }
 .bg-inverse { background-color: var(--text-main); }
+.text-accent { color: var(--accent); }
+.text-bg { color: var(--bg-color); }
+.bg-text { background-color: var(--text-main); }
 
+/* =========================================
+   GLASS COMPONENTS
+   ========================================= */
 .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -40,208 +75,36 @@ body {
     border: 1px solid var(--glass-border);
 }
 
-.gradient-text {
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.gradient-text, .text-gradient {
     background: linear-gradient(90deg, var(--accent), #ec4899);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* =========================================
+   NAVIGATION
+   ========================================= */
 .nav-link {
     color: var(--text-secondary);
-    transition: color 0.3s;
+    transition: color 0.3s ease;
+    position: relative;
+    text-decoration: none;
 }
 
 .nav-link:hover {
     color: var(--text-main);
-}
-
-.skill-tag {
-    padding: 6px 12px;
-    border-radius: 99px;
-    background: var(--glass-border);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.project-card {
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-/* Hide scrollbar for clean look */
-::-webkit-scrollbar {
-    width: 0px;
-}
-
-footer a {
-    display: inline-block;
-    position: relative;
-}
-
-/* Subtle hover underline effect */
-footer a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
-}
-
-footer a:hover::after {
-    width: 100%;
-}
-
-#live-clock {
-    font-weight: 700;
-    color: var(--text);
-}
-
-.skill-tag {
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 6px 14px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--muted);
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.skill-tag:hover {
-    color: var(--text);
-    border-color: var(--accent);
-    background: var(--accent);
-    color: white; /* Contrast for the accent color */
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px var(--accent);
-}
-
-/* Optional: Different colors for different categories */
-.glass-card:nth-child(1):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #6366f1; }
-.glass-card:nth-child(2):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #ec4899; }
-.glass-card:nth-child(3):hover .skill-tag:hover { box-shadow: 0 10px 20px -10px #10b981; }
-
-/* Vertical timeline/border effect for certifications */
-.border-l-2 {
-    border-left-width: 2px;
-    border-color: var(--border);
-}
-
-/* Subtle accent background for the main card on hover */
-.glass-card.group:hover {
-    border-color: rgba(var(--accent-rgb), 0.3); /* If using RGB variables */
-}
-
-/* EnsureLucide icons alignment */
-#education [data-lucide] {
-    stroke-width: 2.5px;
-}
-
-.stack-chip {
-    font-family: 'JetBrains Mono', monospace; /* Or any mono font */
-    font-size: 10px;
-    font-weight: 700;
-    padding: 4px 10px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--muted);
-    text-transform: uppercase;
-}
-
-.group:hover .stack-chip {
-    border-color: var(--accent);
-    color: var(--text);
-}
-
-.border-border {
-    border-color: var(--border);
-}
-
-/* Vertical Timeline Line Color */
-#experience .w-\[1px\] {
-    background: linear-gradient(to bottom, var(--accent), transparent);
-    opacity: 0.3;
-}
-/* Syntax Highlighting Colors */
-.code-key { color: var(--accent); }
-.code-string { color: #27c93f; }
-.code-comment { color: #64748b; font-style: italic; }
-.code-bool { color: #ffbd2e; }
-
-/* Typing Cursor Effect */
-#typed-code::after {
-    content: '|';
-    animation: blink 1s infinite;
-    color: var(--accent);
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-.text-gradient {
-    background: linear-gradient(90deg, var(--accent), #ec4899);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Base Skill Tag */
-.skill-tag, .skill-tag-pink, .skill-tag-green {
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
-}
-
-/* Blue/Accent (Programming) */
-.skill-tag:hover {
-    background: var(--accent);
-    color: white;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
-/* Pink (Design) */
-.skill-tag-pink:hover {
-    background: #ec4899;
-    color: white;
-    border-color: #ec4899;
-    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-}
-
-/* Green (Workflow) */
-.skill-tag-green:hover {
-    background: #10b981;
-    color: white;
-    border-color: #10b981;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-/* Navigation Link Styling */
-.nav-link {
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--text);
 }
 
 .nav-link::after {
@@ -259,7 +122,6 @@ footer a:hover::after {
     width: 100%;
 }
 
-/* Active Section Highlight */
 .nav-link.active {
     color: var(--accent);
 }
@@ -271,7 +133,7 @@ footer a:hover::after {
 }
 
 #mobile-menu.active {
-    display: block;
+    display: block !important;
     animation: slideDown 0.3s ease forwards;
 }
 
@@ -280,16 +142,364 @@ footer a:hover::after {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* Helper to prevent header from blocking clicks on hero text */
+/* Prevent header from blocking clicks */
 header { pointer-events: none; }
 header nav, header #mobile-menu { pointer-events: auto; }
 
-#code-content{
+/* =========================================
+   SKILL TAGS
+   ========================================= */
+.skill-tag, .skill-tag-pink, .skill-tag-green {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.skill-tag:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
+}
+
+.skill-tag-pink:hover {
+    background: #ec4899;
+    color: white;
+    border-color: #ec4899;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    transform: translateY(-2px);
+}
+
+.skill-tag-green:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   STACK CHIPS
+   ========================================= */
+.stack-chip {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.group:hover .stack-chip {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+/* =========================================
+   PROJECT CARDS \u2014 RESPONSIVE FIX
+   ========================================= */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;   /* needed for absolute tooltip children */
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Tooltips: hide on mobile, show on desktop hover */
+.project-card .absolute {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .project-card .absolute {
+        display: block;
+    }
+}
+
+/* Project links row */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.project-links a {
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.project-links a:hover {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+}
+
+/* =========================================
+   CODE WINDOW
+   ========================================= */
+#code-content {
     padding: 0;
     text-align: left;
 }
 
-.social-icon{
-    font-size: 100px;
-    margin-right: 50px;
+#typed-code::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--accent);
 }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* =========================================
+   BORDER UTILITIES
+   ========================================= */
+.border-border {
+    border-color: var(--border);
+}
+
+#experience .w-\[1px\] {
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0.3;
+}
+
+/* =========================================
+   LIVE CLOCK
+   ========================================= */
+#live-clock {
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* =========================================
+   SOCIAL ICONS \u2014 RESPONSIVE
+   ========================================= */
+.social-icon {
+    font-size: clamp(48px, 10vw, 80px);
+    margin-right: clamp(12px, 4vw, 40px);
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--accent);
+    transform: scale(1.15);
+}
+
+.foot-logo {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   REVEAL ANIMATION
+   ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar { width: 0px; }
+
+/* =========================================
+   RESPONSIVE: MAIN LAYOUT
+   ========================================= */
+
+/* Make sure main content fills width */
+main {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Fix hero heading wrapping on small screens */
+@media (max-width: 640px) {
+    h1.text-6xl {
+        font-size: 2.5rem !important;
+        line-height: 1.15;
+    }
+
+    h3.text-5xl {
+        font-size: 2rem !important;
+    }
+
+    h3.text-4xl {
+        font-size: 1.75rem !important;
+    }
+
+    h4.text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    /* About section grid: stack on mobile */
+    #about .grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Quick stats bento: 2 cols already, ensure they don't overflow */
+    #about .grid-cols-2 {
+        gap: 0.75rem;
+    }
+
+    /* Code window: shrink padding */
+    #code-content pre {
+        font-size: 0.65rem !important;
+        overflow-x: auto;
+    }
+
+    /* Skills section: single column */
+    #skills .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Experience card: stack layout */
+    #experience .flex-col.md\\:flex-row {
+        flex-direction: column;
+    }
+
+    /* Hide vertical timeline line on mobile */
+    #experience .hidden.md\\:flex {
+        display: none;
+    }
+
+    /* Contact section social icons */
+    #contact {
+        padding: 2rem 1rem;
+    }
+
+    .social-icon {
+        font-size: 48px;
+        margin-right: 12px;
+    }
+
+    /* Footer grid: single column */
+    footer .grid-cols-1.md\\:grid-cols-4 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    footer .col-span-1.md\\:col-span-2 {
+        grid-column: span 1;
+    }
+
+    /* Bottom bar in footer */
+    footer .flex-col.md\\:flex-row {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Projects grid: single column on small tablets */
+    #projects .grid-cols-1.md\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Experience top section */
+    #experience .flex-col.md\\:flex-row.justify-between {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Bento stats row */
+    .md\\:col-span-2 {
+        grid-column: span 1;
+    }
+
+    /* Ensure glass card takes full width */
+    .glass-card {
+        width: 100%;
+    }
+
+    /* Nav bottom pill: smaller on mobile */
+    nav.fixed.bottom-6 {
+        font-size: 0.7rem;
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVE: CODE WINDOW PRE BLOCK
+   ========================================= */
+#typed-code pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+}
+
+/* =========================================
+   PROFILE AVATAR
+   ========================================= */
+.w-36.h-36.rounded-full {
+    width: clamp(80px, 20vw, 144px);
+    height: clamp(80px, 20vw, 144px);
+    margin: 0 auto 1rem auto;
+}
+
+/* =========================================
+   SECTION SPACING ON MOBILE
+   ========================================= */
+@media (max-width: 640px) {
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
